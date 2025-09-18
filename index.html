@@ -77,17 +77,16 @@
             font-size: 18px;
             border-radius: 5px;
         }
-        .footer-luxe {
-            background: linear-gradient(90deg, #232526 0%, #4CAF50 100%);
+        .footer-elegant {
+            background: linear-gradient(120deg, #111 0%, #444 100%);
             color: #fff;
-            padding: 48px 0 24px 0;
-            margin-top: 60px;
-            font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 -4px 24px rgba(76,175,80,0.15);
+            padding: 48px 0 18px 0;
             border-top-left-radius: 32px;
             border-top-right-radius: 32px;
+            box-shadow: 0 -2px 24px rgba(0,0,0,0.18);
+            font-family: 'Montserrat', sans-serif;
         }
-        .footer-luxe .container {
+        .footer-container {
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
@@ -96,83 +95,76 @@
             align-items: flex-start;
             gap: 32px;
         }
-        .footer-brand h2 {
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #fff 0%, #4CAF50 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .footer-col {
+            flex: 1 1 200px;
+            min-width: 180px;
+            margin-bottom: 18px;
         }
-        .footer-brand .description {
-            margin: 12px 0 0 0;
-            font-size: 17px;
-            opacity: 0.85;
+        .footer-col.brand h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+        .footer-col.brand p {
+            color: #bbb;
+            font-size: 16px;
+            margin: 0;
             font-style: italic;
         }
-        .footer-nav {
+        .footer-col.nav {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-top: 8px;
+            gap: 10px;
         }
-        .footer-nav a {
-            color: #fff;
+        .footer-col.nav a {
+            color: #eee;
             text-decoration: none;
-            font-size: 19px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 18px;
+            transition: color 0.2s;
             position: relative;
         }
-        .footer-nav a::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #4CAF50;
-            transition: width .3s;
-            position: absolute;
-            bottom: -2px;
-            left: 0;
+        .footer-col.nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 6px #fff, 0 0 2px #888;
         }
-        .footer-nav a:hover::after {
-            width: 100%;
-        }
-        .footer-socials {
+        .footer-col.socials {
             display: flex;
-            gap: 22px;
+            gap: 18px;
             align-items: center;
-            margin-top: 8px;
         }
-        .footer-socials a {
-            background: rgba(255,255,255,0.10);
+        .footer-col.socials a {
+            background: #222;
             border-radius: 50%;
             padding: 10px;
-            transition: background 0.3s, transform 0.3s;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 12px rgba(76,175,80,0.10);
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
-        .footer-socials a:hover {
-            background: #4CAF50;
-            transform: scale(1.12);
+        .footer-col.socials a:hover {
+            background: #fff;
+            transform: scale(1.1);
         }
-        .footer-socials img {
-            height: 30px;
-            width: 30px;
-            filter: invert(1) brightness(2);
+        .footer-col.socials img {
+            height: 28px;
+            width: 28px;
+            filter: invert(1) grayscale(1) brightness(0.7);
+            transition: filter 0.3s;
         }
-        .footer-luxe hr {
-            border: none;
-            border-top: 1.5px solid rgba(255,255,255,0.18);
-            margin: 36px 0 18px 0;
+        .footer-col.socials a:hover img {
+            filter: invert(0) grayscale(1) brightness(0.2);
         }
-        .footer-luxe p {
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 32px;
+            padding-top: 12px;
             text-align: center;
-            font-size: 16px;
-            opacity: 0.7;
+        }
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 15px;
             margin: 0;
             letter-spacing: 1px;
         }
@@ -217,23 +209,28 @@
                 width: 90vw;
                 font-size: 18px;
             }
-            .footer-luxe .container {
+            .footer-container {
                 flex-direction: column;
                 align-items: center;
                 gap: 24px;
             }
-            .footer-nav {
-                flex-direction: row;
-                gap: 18px;
-                margin-top: 16px;
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+                text-align: center;
             }
-            .footer-brand h2 {
+            .footer-col.nav {
+                flex-direction: row;
+                justify-content: center;
+                gap: 18px;
+            }
+            .footer-col.brand h2 {
                 font-size: 26px;
             }
-            .footer-brand .description {
+            .footer-col.brand p {
                 font-size: 15px;
             }
-            .footer-socials img {
+            .footer-col.socials img {
                 height: 26px;
                 width: 26px;
             }
@@ -242,16 +239,17 @@
             header .logo img {
                 height: 50px !important;
             }
-            .footer-brand h2 {
-                font-size: 20px;
+            .footer-elegant {
+                padding: 32px 0 12px 0;
+                border-radius: 18px 18px 0 0;
             }
-            .footer-brand .description {
-                font-size: 13px;
+            .footer-col.brand h2 {
+                font-size: 22px;
             }
-            .footer-nav a {
+            .footer-col.nav a {
                 font-size: 15px;
             }
-            .footer-socials img {
+            .footer-col.socials img {
                 height: 22px;
                 width: 22px;
             }
@@ -294,15 +292,15 @@
     <!-- Chiffres clés -->
     <section style="display:flex; justify-content:space-around; background-color:#fff; padding:40px 0;">
         <div style="text-align:center;">
-            <h2 style="color:#4CAF50; font-size:36px;">+50</h2>
+            <h2 style="color:rgb(0, 0, 0);; font-size:36px;">+50</h2>
             <p>Clients satisfaits</p>
         </div>
         <div style="text-align:center;">
-            <h2 style="color:#4CAF50; font-size:36px;">98%</h2>
+            <h2 style="color:#000000; font-size:36px;">98%</h2>
             <p>Taux de fidélisation</p>
         </div>
         <div style="text-align:center;">
-            <h2 style="color:#4CAF50; font-size:36px;">10 ans</h2>
+            <h2 style="color:#000000; font-size:36px;">10 ans</h2>
             <p>d’expertise digitale</p>
         </div>
     </section>
@@ -361,20 +359,20 @@
         <a href="contact.html">Contactez-nous</a>
     </div>
 
-    <footer class="footer-luxe">
-        <div class="container">
-            <div class="footer-brand">
+    <footer class="footer-elegant">
+        <div class="footer-container">
+            <div class="footer-col brand">
                 <h2>Ethic</h2>
-                <p class="description">Agence de Marketing Digital</p>
+                <p>Agence de Marketing Digital</p>
             </div>
-            <nav class="footer-nav">
+            <div class="footer-col nav">
                 <a href="index.html">Accueil</a>
                 <a href="service.html">Services</a>
                 <a href="rendezvous.html">Rendez-Vous</a>
                 <a href="apropos.html">À propos</a>
                 <a href="contact.html">Contact</a>
-            </nav>
-            <div class="footer-socials">
+            </div>
+            <div class="footer-col socials">
                 <a href="https://www.linkedin.com/company/tryduo" target="_blank" title="LinkedIn">
                     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
                 </a>
@@ -386,8 +384,9 @@
                 </a>
             </div>
         </div>
-        <hr>
-        <p>&copy; 2025 Ethic. Tous droits réservés.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ethic. Tous droits réservés.</p>
+        </div>
     </footer>
 </body>
 </html>
