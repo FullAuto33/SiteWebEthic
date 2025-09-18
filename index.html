@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethic - Agence de Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #000;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            border-bottom: 2px solid #ddd;
+        }
+        header .logo img {
+            height: 100px;
+            vertical-align: middle;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(76,175,80,0.12);
+            background: transparent;
+        }
+        header .nav {
+            display: flex;
+            gap: 30px;
+        }
+        header .nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        header .nav a:hover {
+            color: #4CAF50;
+        }
+        header .cta-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        section {
+            padding: 50px;
+        }
+        .services, .about, .testimonials {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+        .service, .testimonial {
+            width: 30%;
+            text-align: center;
+        }
+        .service h3, .testimonial h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta a {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .footer-luxe {
+            background: linear-gradient(90deg, #232526 0%, #4CAF50 100%);
+            color: #fff;
+            padding: 48px 0 24px 0;
+            margin-top: 60px;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 -4px 24px rgba(76,175,80,0.15);
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+        }
+        .footer-luxe .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 32px;
+        }
+        .footer-brand h2 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff 0%, #4CAF50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .footer-brand .description {
+            margin: 12px 0 0 0;
+            font-size: 17px;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .footer-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .footer-nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width .3s;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+        }
+        .footer-nav a:hover::after {
+            width: 100%;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .footer-socials a {
+            background: rgba(255,255,255,0.10);
+            border-radius: 50%;
+            padding: 10px;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(76,175,80,0.10);
+        }
+        .footer-socials a:hover {
+            background: #4CAF50;
+            transform: scale(1.12);
+        }
+        .footer-socials img {
+            height: 30px;
+            width: 30px;
+            filter: invert(1) brightness(2);
+        }
+        .footer-luxe hr {
+            border: none;
+            border-top: 1.5px solid rgba(255,255,255,0.18);
+            margin: 36px 0 18px 0;
+        }
+        .footer-luxe p {
+            text-align: center;
+            font-size: 16px;
+            opacity: 0.7;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        /* ----------- MOBILE OPTIMISATION ----------- */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                padding: 16px 10px;
+                gap: 10px;
+            }
+            header .logo img {
+                height: 70px !important;
+            }
+            header .nav {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            header .nav a {
+                font-size: 18px;
+                padding: 8px 0;
+            }
+            header .cta-btn {
+                margin-top: 10px;
+                width: 90vw;
+                text-align: center;
+                font-size: 18px;
+            }
+            section {
+                padding: 24px 8px;
+            }
+            .services, .about, .testimonials {
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 30px;
+            }
+            .service, .testimonial {
+                width: 100%;
+                margin-bottom: 18px;
+            }
+            .cta a {
+                width: 90vw;
+                font-size: 18px;
+            }
+            .footer-luxe .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+            .footer-nav {
+                flex-direction: row;
+                gap: 18px;
+                margin-top: 16px;
+            }
+            .footer-brand h2 {
+                font-size: 26px;
+            }
+            .footer-brand .description {
+                font-size: 15px;
+            }
+            .footer-socials img {
+                height: 26px;
+                width: 26px;
+            }
+        }
+        @media (max-width: 600px) {
+            header .logo img {
+                height: 50px !important;
+            }
+            .footer-brand h2 {
+                font-size: 20px;
+            }
+            .footer-brand .description {
+                font-size: 13px;
+            }
+            .footer-nav a {
+                font-size: 15px;
+            }
+            .footer-socials img {
+                height: 22px;
+                width: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Logo à gauche -->
+        <div class="logo">
+            <a href="index.html"> <img src="Ethic.png" alt="Ethic Logo" style="height:100px; vertical-align:middle;"></a>
+        </div>
+
+        <!-- Navigation à droite -->
+        <div class="nav">
+            <a href="index.html">Accueil</a>
+            <a href="service.html">Services</a>
+            <a href="rendezvous.html">Rendez-Vous</a>
+            <a href="apropos.html">À propos</a>
+        </div>
+
+        <!-- Bouton "Nous Contacter" -->
+        <a href="contact.html" class="cta-btn">Nous Contacter</a>
+    </header>
+
+    <!-- Section d’introduction -->
+    <section style="background-color:#f9f9f9; padding:60px 50px; text-align:center;">
+        <h1 style="font-size:40px; margin-bottom:20px;">Bienvenue chez Ethic</h1>
+        <p style="font-size:22px; max-width:700px; margin:0 auto;">
+            Votre partenaire de confiance pour un marketing digital responsable, innovant et performant.<br>
+            Nous accompagnons les entreprises dans leur croissance en ligne tout en respectant leurs valeurs et leur éthique.
+        </p>
+    </section>
+
+    <!-- Chat Wathsapp API-->
+    <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-401fc4de-9dbd-4a8e-8eba-a9df40b55a1f" data-elfsight-app-lazy></div>
+
+    <!-- Chiffres clés -->
+    <section style="display:flex; justify-content:space-around; background-color:#fff; padding:40px 0;">
+        <div style="text-align:center;">
+            <h2 style="color:#4CAF50; font-size:36px;">+50</h2>
+            <p>Clients satisfaits</p>
+        </div>
+        <div style="text-align:center;">
+            <h2 style="color:#4CAF50; font-size:36px;">98%</h2>
+            <p>Taux de fidélisation</p>
+        </div>
+        <div style="text-align:center;">
+            <h2 style="color:#4CAF50; font-size:36px;">10 ans</h2>
+            <p>d’expertise digitale</p>
+        </div>
+    </section>
+
+    <!-- Valeurs de l’agence -->
+    <section style="background-color:#f9f9f9; padding:50px;">
+        <h2 style="text-align:center; margin-bottom:30px;">Nos valeurs</h2>
+        <div style="display:flex; justify-content:space-around;">
+            <div style="width:30%; text-align:center;">
+                <h3>Transparence</h3>
+                <p>Nous communiquons clairement sur nos actions et nos résultats.</p>
+            </div>
+            <div style="width:30%; text-align:center;">
+                <h3>Durabilité</h3>
+                <p>Des stratégies qui respectent l’environnement et l’humain.</p>
+            </div>
+            <div style="width:30%; text-align:center;">
+                <h3>Innovation</h3>
+                <p>Nous utilisons les dernières technologies pour booster votre croissance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="service">
+            <h3>SEO</h3>
+            <p>Optimisation pour les moteurs de recherche, pour améliorer votre visibilité.</p>
+        </div>
+        <div class="service">
+            <h3>Publicité Digitale</h3>
+            <p>Campagnes de publicité pour générer du trafic qualifié et des conversions.</p>
+        </div>
+        <div class="service">
+            <h3>Réseaux Sociaux</h3>
+            <p>Gestion de vos réseaux sociaux pour renforcer votre image de marque.</p>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>À propos de nous</h2>
+        <p>Ethic est une agence de marketing dédiée à des stratégies numériques responsables et efficaces. Nous croyons en une approche transparente, axée sur la durabilité et l'innovation.</p>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonial">
+            <h3>Client 1</h3>
+            <p>"Ethic a transformé notre stratégie digitale, les résultats sont incroyables!"</p>
+        </div>
+        <div class="testimonial">
+            <h3>Client 2</h3>
+            <p>"Une équipe professionnelle et réactive. Ils savent exactement ce qu'ils font."</p>
+        </div>
+    </section>
+
+    <div class="cta">
+        <a href="contact.html">Contactez-nous</a>
+    </div>
+
+    <footer class="footer-luxe">
+        <div class="container">
+            <div class="footer-brand">
+                <h2>Ethic</h2>
+                <p class="description">Agence de Marketing Digital</p>
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Accueil</a>
+                <a href="service.html">Services</a>
+                <a href="rendezvous.html">Rendez-Vous</a>
+                <a href="apropos.html">À propos</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/company/tryduo" target="_blank" title="LinkedIn">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+                </a>
+                <a href="mailto:collab.ethic@gmail.com" title="Email">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Mail">
+                </a>
+                <a href="https://wa.me/33778323223" target="_blank" title="WhatsApp">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+        <hr>
+        <p>&copy; 2025 Ethic. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
