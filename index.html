@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethic - Agence d'Acquistion</title>
+    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         html, body {
             width: 100%;
-            max-width: 100vw;
+            max-width: 100%;
             overflow-x: hidden;
         }
         body {
@@ -47,6 +48,7 @@
             color: rgb(165, 165, 165);
         }
         header .cta-btn {
+            font-family: 'Arapey';
             padding: 10px 20px;
             background-color: rgb(165, 165, 165);
             color: white;
@@ -199,6 +201,7 @@
                 padding: 8px 0;
             }
             header .cta-btn {
+                font-family: 'Arapey';
                 margin-top: 10px;
                 width: 90vw;
                 text-align: center;
@@ -266,91 +269,7 @@
             }
         }
 
-        /* 3D Animated Background Spheres */
-        body::before, body::after {
-            content: '';
-            position: fixed;
-            z-index: 0;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.25;
-            filter: blur(60px);
-            animation: sphereMove 16s infinite alternate cubic-bezier(.77,0,.18,1);
-        }
-        body::before {
-            width: 420px;
-            height: 420px;
-            left: -120px;
-            top: 60px;
-            background: linear-gradient(135deg, #fff 0%, #888 100%);
-            animation-delay: 0s;
-        }
-        body::after {
-            width: 320px;
-            height: 320px;
-            right: -100px;
-            bottom: 40px;
-            background: linear-gradient(135deg, #444 0%, #fff 100%);
-            animation-delay: 4s;
-        }
-        @keyframes sphereMove {
-            0% { transform: translateY(0) scale(1) rotate(0deg);}
-            100% { transform: translateY(-40px) scale(1.08) rotate(18deg);}
-        }
 
-        /* Fade-in and 3D slide for sections */
-        section, .cta, .about, .services, .testimonials, .footer-elegant, header {
-            opacity: 0;
-            transform: perspective(800px) rotateX(12deg) translateY(60px) scale(0.98);
-            animation: fade3dIn 1.2s cubic-bezier(.77,0,.18,1) forwards;
-        }
-        header { animation-delay: 0.1s;}
-        section:nth-of-type(1) { animation-delay: 0.2s;}
-        section:nth-of-type(2) { animation-delay: 0.3s;}
-        section:nth-of-type(3) { animation-delay: 0.4s;}
-        section:nth-of-type(4) { animation-delay: 0.5s;}
-        section:nth-of-type(5) { animation-delay: 0.6s;}
-        .about { animation-delay: 0.7s;}
-        .services { animation-delay: 0.8s;}
-        .testimonials { animation-delay: 0.9s;}
-        .cta { animation-delay: 1s;}
-        .footer-elegant { animation-delay: 1.1s;}
-        @keyframes fade3dIn {
-            0% { opacity: 0; transform: perspective(800px) rotateX(12deg) translateY(60px) scale(0.98);}
-            100% { opacity: 1; transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);}
-        }
-
-        /* Smooth transitions for interactive elements */
-        a, button, .cta-btn, .footer-col.nav a, .footer-col.socials a, .footer-col.socials img {
-            transition: 
-                color 0.3s cubic-bezier(.77,0,.18,1),
-                background 0.3s cubic-bezier(.77,0,.18,1),
-                box-shadow 0.4s cubic-bezier(.77,0,.18,1),
-                transform 0.4s cubic-bezier(.77,0,.18,1),
-                filter 0.3s cubic-bezier(.77,0,.18,1);
-        }
-
-        /* Parallax effect for header and footer on scroll */
-        header, .footer-elegant {
-            will-change: transform;
-        }
-        @media (pointer: fine) {
-            html {
-                scroll-behavior: smooth;
-            }
-            body {
-                perspective: 1200px;
-            }
-        }
-        /* Responsive: keep 3D bg spheres visible but smaller */
-        @media (max-width: 900px) {
-            body::before {
-                width: 220px; height: 220px; left: -60px; top: 20px;
-            }
-            body::after {
-                width: 160px; height: 160px; right: -40px; bottom: 10px;
-            }
-        }
 
         /* Custom styles for Ethic agency */
         .cta-btn-group {
@@ -423,6 +342,7 @@
         }
 
         .cta-btn-rect-container {
+            font-family: 'Arapey';
             display: flex;
             justify-content: center;
             margin: 24px 0 0 0;
@@ -490,20 +410,23 @@
         </div>
 
         <!-- Bouton "Nous Contacter" -->
-        <a href="contact.html" class="cta-btn">Nous Contacter</a>
+        <a href="contact.html" class="cta-btn">Contactez-nous</a>
     </header>
 
     <!-- Section d’introduction -->
-    <section style="; padding:48px 0 32px 0; text-align:center;">
-        <h1 style="font-size:2.5rem; margin-bottom:18px;">La solution pour rester à la page sans renoncer à vos valeurs</h1>
+    <section style="margin: auto; padding:48px 0 32px 0; text-align:center;">
+        <h1 style="font-size:2.5rem;font-family: 'Arapey'; margin-bottom:18px;">La solution pour rester à la page sans renoncer à vos valeurs</h1>
         <p style="font-size:1.25rem; max-width:700px; margin:0 auto 18px auto;">
-            Parce que votre entreprise le mérite.<br>
+            Parce que votre entreprise le mérite.<br><br>
             Création d’un système d’acquisition sur mesure.<br>
             Pour en savoir plus :
         </p>
         <div class="cta-btn-rect-container">
             <a href="rendezvous.html" class="cta-btn-rect">Vous voulez nous découvrir ?<br>Réservez un appel gratuitement !</a>
-        </div>
+        </div><br>
+        <p style="font-size:1.25rem; max-width:700px; margin:0 auto 18px auto;">
+            Recevez une mind map personalisé gratuitement <br>en replissant ce formulaire ! 🎁
+        </p>
         <div class="cta-btn-rect-container">
             <a href="https://forms.gle/Npzputi59fEUr449A" class="cta-btn-rect">Dites-nous ce qui vous empêche de vendre plus...<br>(Formulaire)</a>
         </div>
@@ -555,6 +478,7 @@
             text-align: left;
         }
         .about-text h2 {
+            font-family: 'Arapey';
             font-size: 2rem;
             margin-bottom: 8px;
             color: #222;
@@ -590,6 +514,7 @@
             }
         }
         .cta {
+            font-family: 'Arapey';
             text-align: center;
             margin-top: 32px;
             margin-bottom: 40px;
