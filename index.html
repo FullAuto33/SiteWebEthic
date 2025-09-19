@@ -55,6 +55,36 @@
             text-decoration: none;
             font-size: 18px;
             border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition:
+                background 0.3s cubic-bezier(.77,0,.18,1),
+                color 0.3s cubic-bezier(.77,0,.18,1),
+                box-shadow 0.4s cubic-bezier(.77,0,.18,1),
+                transform 0.3s cubic-bezier(.77,0,.18,1);
+            z-index: 1;
+        }
+        header .cta-btn::before {
+            content: '';
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 0; height: 0;
+            background: linear-gradient(120deg, #fff 0%, #bbb 100%);
+            opacity: 0.18;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            z-index: 0;
+        }
+        header .cta-btn:hover::before {
+            width: 220%;
+            height: 500%;
+        }
+        header .cta-btn:hover {
+            background: #222;
+            color: #fff;
+            box-shadow: 0 6px 32px #aaa4, 0 0 8px #8882;
+            transform: translateY(-2px) scale(1.04) perspective(400px) rotateX(4deg);
         }
         section {
             padding: 50px;
@@ -129,7 +159,12 @@
         .footer-col.nav {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
         .footer-col.nav a {
             color: #eee;
@@ -146,6 +181,9 @@
             display: flex;
             gap: 18px;
             align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            width: 100%;
         }
         .footer-col.socials a {
             background: #222;
@@ -257,15 +295,57 @@
                 padding: 32px 0 12px 0;
                 border-radius: 18px 18px 0 0;
             }
-            .footer-col.brand h2 {
-                font-size: 22px;
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 0 6px;
             }
-            .footer-col.nav a {
-                font-size: 15px;
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 6px;
+            }
+            .footer-col.socials {
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 10px;
+                margin-top: 8px;
+                margin-bottom: 4px;
+                width: 100%;
+            }
+            .footer-col.socials a {
+                padding: 8px;
             }
             .footer-col.socials img {
-                height: 22px;
-                width: 22px;
+                height: 20px;
+                width: 20px;
+            }
+            .footer-col.brand h2 {
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+            .footer-col.brand h3 {
+                font-size: 13px;
+                margin-bottom: 2px;
+            }
+            .footer-col.brand p {
+                font-size: 12px;
+            }
+            .footer-col.nav {
+                flex-direction: row;
+                justify-content: center;
+                gap: 8px;
+                margin-bottom: 4px;
+            }
+            .footer-col.nav a {
+                font-size: 12px;
+                padding: 0 2px;
+            }
+            .footer-bottom {
+                padding-top: 4px;
+                font-size: 11px;
             }
         }
 
@@ -382,16 +462,257 @@
                 padding: 14px 0;
             }
         }
+
+        /* -------- WhatsApp Widget -------- */
+        #whatsapp-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-family: sans-serif;
+        z-index: 9999;
+        }
+
+        #whatsapp-button {
+        width: 60px; height: 60px;
+        background: #25d366;
+        border-radius: 50%;
+        display: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        position: relative;
+        }
+
+        #whatsapp-button img {
+        width: 32px; height: 32px;
+        filter: invert(1);
+        }
+
+        #whatsapp-button .notif {
+        position: absolute;
+        top: 8px; right: 8px;
+        width: 11px; height: 11px;
+        background: red;
+        border-radius: 50%;
+        }
+
+        /* Fenêtre de chat */
+        #whatsapp-chat {
+        width: 320px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        position: absolute;
+        bottom: 80px; right: 0;
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        }
+
+        /* Header */
+        .chat-header {
+        background: #008069;
+        color: #fff;
+        padding: 12px;
+        display: flex; align-items: center; gap: 10px;
+        position: relative;
+        }
+
+        .chat-header .chat-logo {
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        }
+
+        .chat-header .chat-info h4 {
+        margin: 0; font-size: 16px;
+        }
+
+        .chat-header .chat-info p {
+        margin: 0; font-size: 13px; color: #cfcfcf;
+        }
+
+        .chat-header button {
+        position: absolute;
+        top: 8px; right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        }
+
+        /* Body */
+        .chat-body {
+        padding: 10px;
+        background-image: url('fond-wa.jpg');
+        background-size: cover;
+        flex: 1;
+        }
+
+        .message {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        }
+
+        .message.received {
+            background: #fff;
+            align-self: flex-start;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-radius: 16px 16px 16px 4px;
+            margin-bottom: 10px;
+            color: #222;
+            position: relative;
+            padding: 10px 16px;
+            max-width: 80%;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Ajoute une petite "queue" de bulle à gauche */
+        .message.received::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            bottom: 8px;
+            width: 12px;
+            height: 18px;
+            background: transparent;
+            border-bottom-right-radius: 16px 14px;
+            box-shadow: -2px 2px 0 0 #fff;
+            transform: rotate(-25deg);
+        }
+
+        /* Footer */
+        .chat-footer {
+            display: flex;
+            border-top: 1px solid #ddd;
+            background: #fff;
+            padding: 8px 10px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-footer input[type="text"] {
+            flex: 1;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 15px;
+            outline: none;
+            background: #f7f7f7;
+            color: #222;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 4px rgba(80,80,80,0.06);
+        }
+
+        .chat-footer input[type="text"]:focus {
+            border-color: #25d366;
+            background: #fff;
+            box-shadow: 0 2px 8px #25d36622;
+        }
+
+        .send-btn {
+            background: #25d366;
+            border: none;
+            padding: 0 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px #25d36633;
+        }
+        .send-btn:hover {
+            background: #1fa851;
+            box-shadow: 0 4px 16px #25d36644;
+        }
+        .send-btn img {
+            display: block;
+            width: 22px;
+            height: 22px;
+            filter: invert(1) brightness(2);
+        }
+
+        /* Ajoute ceci à la fin de ton bloc <style> */
+        .chat-logo-container {
+            position: relative;
+            display: inline-block;
+        }
+        .online-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 2px;
+            width: 8px;
+            height: 8px;
+            background: #25d366;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #25d36688;
+            display: block;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 10px 0 10px 0;
+            padding: 10px 16px;
+            background: #fff;
+            border-radius: 16px 16px 16px 4px;
+            width: fit-content;
+            min-width: 48px;
+            position: relative;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            font-size: 15px;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #25d366;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typingBlink 1s infinite both;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBlink {
+            0%, 80%, 100% { opacity: 0.3; }
+            40% { opacity: 1; }
+        }
+
+        /* Ajoute ce code dans ta balise <style> principale */
+
+        .about-img img {
+            animation: aboutImgFloat 2.5s cubic-bezier(.77,0,.18,1) infinite alternate;
+            box-shadow: 0 2px 16px #2222;
+            transition: transform 0.4s cubic-bezier(.77,0,.18,1), box-shadow 0.4s;
+        }
+
+        @keyframes aboutImgFloat {
+            0% {
+                transform: translateY(0) scale(1) rotate(-2deg);
+                box-shadow: 0 2px 16px #2222;
+            }
+            50% {
+                transform: translateY(-12px) scale(1.04) rotate(2deg);
+                box-shadow: 0 8px 32px #8883;
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(-2deg);
+                box-shadow: 0 2px 16px #2222;
+            }
+        }
     </style>
+
+
     <script>
 
-                // Animation d'entrée : cache après 3 secondes
-        window.addEventListener("load", () => {
-        const intro = document.getElementById("intro-animation");
-        setTimeout(() => {
-            intro.classList.add("hidden");
-        }, 3000); // durée avant disparition (ms)
-        });
 
         
         // Parallax effect for header/footer (subtle 3D on scroll)
@@ -402,29 +723,37 @@
             if(header) header.style.transform = `translateZ(${Math.max(-sc/8, -40)}px)`;
             if(footer) footer.style.transform = `translateZ(${Math.max((sc-200)/8, -40)}px)`;
         });
+
+
+                // Animation d'intro logo
+        window.addEventListener("load", () => {
+        const intro = document.getElementById("intro");
+        const logo = document.querySelector(".intro-logo");
+
+        // Après l'animation du logo, attendre 1s puis cacher l'intro
+        setTimeout(() => {
+            intro.classList.add("hidden");
+        }, 3000); // durée totale (logo 2s + pause 1s)
+        });
+
+
     </script>
 </head>
 <body>
+
+        <!-- Intro Animation -->
+    <div id="intro">
+    <img src="Ethic.png" alt="Logo Ethic" class="intro-logo">
+    </div>
+
+        
+
     <header>
         <!-- Logo à gauche -->
         <div class="logo">
             <a href="index.html"> <img src="Ethic.png" alt="Ethic Logo" style="height:100px; vertical-align:middle;"></a>
         </div>
-
-        <!-- Animation d'entrée -->
-        <div id="intro-animation">
-        <div class="scene">
-            <div class="cube">
-            <div class="face front">🌍</div>
-            <div class="face back">🚀</div>
-            <div class="face right">✨</div>
-            <div class="face left">💻</div>
-            <div class="face top">👋</div>
-            <div class="face bottom">🔥</div>
-            </div>
-        </div>
-        </div>
-
+        
 
         <!-- Navigation à droite -->
         <div class="nav">
@@ -457,7 +786,7 @@
     </section>
 
 
-    
+   
 
 
     <!-- Section À propos réorganisée -->
@@ -474,6 +803,62 @@
             </div>
         </div>
     </section>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const whatsappBtn = document.getElementById("whatsapp-button");
+            const whatsappChat = document.getElementById("whatsapp-chat");
+            const closeChat = document.getElementById("close-chat");
+            const chatBody = document.getElementById("chat-body");
+
+            if (!whatsappBtn || !whatsappChat || !closeChat || !chatBody) {
+                console.error("WhatsApp widget introuvable dans le DOM !");
+                return;
+            }
+
+            // Attendre 3 secondes avant d'afficher le bouton
+            setTimeout(() => {
+                whatsappBtn.style.display = "flex";
+                whatsappBtn.style.justifyContent = "center";
+                whatsappBtn.style.alignItems = "center";
+            }, 3000);
+
+            whatsappBtn.addEventListener("click", () => {
+                whatsappChat.style.display = "flex";
+                // Affiche l'animation "en train d'écrire"
+                chatBody.innerHTML = `
+                    <div class="typing-indicator">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                `;
+                // Après 2 secondes, affiche l'heure + le vrai message
+                setTimeout(() => {
+                    const now = new Date();
+                    const hours = now.getHours().toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const timeString = `${hours}:${minutes}`;
+                    chatBody.innerHTML = `
+                        <div class="message-time" style="color:#888;font-size:8px;margin-bottom:2px;">${timeString}</div>
+                        <div class="message received">
+                            <p>Salut 👋<br>Comment puis-je vous aider ?</p>
+                        </div>
+                    `;
+                }, 2000);
+            });
+
+            closeChat.addEventListener("click", () => {
+                whatsappChat.style.display = "none";
+                // Réinitialise le chatBody pour la prochaine ouverture
+                chatBody.innerHTML = "";
+            });
+        });
+    </script>
+
 
     <style>
         /* ...existing styles... */
@@ -584,12 +969,13 @@
                 padding: 14px 0;
             }
         }
-                /* -------- Animation d'entrée 3D -------- */
-        #intro-animation {
+
+                /* -------- Intro Logo Animation -------- */
+        #intro {
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        background: #fff; /* tu peux changer la couleur si besoin */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -597,51 +983,38 @@
         transition: opacity 1s ease, visibility 1s ease;
         }
 
-        .scene {
-        width: 150px;
-        height: 150px;
-        perspective: 800px;
+        .intro-logo {
+        width: 150px; /* taille initiale du logo */
+        filter: blur(8px) brightness(0.6);
+        transform: scale(0.8);
+        opacity: 0;
+        animation: revealLogo 2s ease forwards;
         }
 
-        .cube {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-        animation: spin 4s linear infinite;
+        @keyframes revealLogo {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+            filter: blur(8px) brightness(0.6);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: blur(2px) brightness(1.2);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0) brightness(1);
+        }
         }
 
-        .face {
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid #00e6e6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        font-family: sans-serif;
-        color: white;
-        }
-
-        .front  { transform: translateZ(75px); }
-        .back   { transform: rotateY(180deg) translateZ(75px); }
-        .right  { transform: rotateY(90deg) translateZ(75px); }
-        .left   { transform: rotateY(-90deg) translateZ(75px); }
-        .top    { transform: rotateX(90deg) translateZ(75px); }
-        .bottom { transform: rotateX(-90deg) translateZ(75px); }
-
-        @keyframes spin {
-        from { transform: rotateX(0) rotateY(0); }
-        to   { transform: rotateX(360deg) rotateY(360deg); }
-        }
-
-        /* Quand on cache l'animation */
-        #intro-animation.hidden {
+        /* Quand l'intro disparaît */
+        #intro.hidden {
         opacity: 0;
         visibility: hidden;
         }
+
 
     </style>
 
@@ -746,5 +1119,135 @@
             <p>&copy; 2025 Ethic. Tous droits réservés.</p>
         </div>
     </footer>
+
+
+        <!-- Bouton WhatsApp + fenêtre de chat -->
+    <div id="whatsapp-widget">
+    <!-- Bulle flottante -->
+    <div id="whatsapp-button">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+        <span class="notif"></span>
+    </div>
+
+    <!-- Fenêtre de chat -->
+    <div id="whatsapp-chat">
+        <div class="chat-header">
+        <div class="chat-logo-container">
+            <img src="Ethic-fondb.png" alt="Ethic Logo" class="chat-logo">
+            <span class="online-dot"></span>
+        </div>
+        <div class="chat-info">
+            <h4>Ayman Kasmi</h4>
+            <p>En ligne</p>
+        </div>
+        <button id="close-chat">&times;</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Le message ou l'animation typing apparaîtra ici -->
+        </div>
+        <div class="chat-footer">
+            <input
+                type="text"
+                id="wa-user-message"
+                placeholder="Entrez votre message..."
+                autocomplete="off"
+                onkeydown="if(event.key==='Enter'){sendToWhatsApp();}"
+            >
+            <button onclick="sendToWhatsApp()" class="send-btn" aria-label="Envoyer">
+                <img src="https://cdn.jsdelivr.net/gh/feathericons/feather/icons/send.svg" alt="Envoyer" style="width:18px;height:20px;filter:invert(1) brightness(2);">
+            </button>
+        </div>
+    </div>
+    </div>
+
+
+
+<script>
+function sendToWhatsApp() {
+    const input = document.getElementById('wa-user-message');
+    let msg = input.value.trim();
+    if (!msg) return;
+    msg = encodeURIComponent(msg);
+    window.open('https://wa.me/33778323223?text=' + msg, '_blank');
+}
+
+// Ajoute ceci pour l’animation typing + heure au message reçu
+document.addEventListener("DOMContentLoaded", () => {
+    const whatsappBtn = document.getElementById("whatsapp-button");
+    const whatsappChat = document.getElementById("whatsapp-chat");
+    const closeChat = document.getElementById("close-chat");
+    const chatBody = document.getElementById("chat-body");
+
+    if (!whatsappBtn || !whatsappChat || !closeChat || !chatBody) {
+        console.error("WhatsApp widget introuvable dans le DOM !");
+        return;
+    }
+
+    setTimeout(() => {
+        whatsappBtn.style.display = "flex";
+        whatsappBtn.style.justifyContent = "center";
+        whatsappBtn.style.alignItems = "center";
+    }, 3000);
+
+    whatsappBtn.addEventListener("click", () => {
+        whatsappChat.style.display = "flex";
+        // Affiche l'animation "en train d'écrire"
+        chatBody.innerHTML = `
+            <div class="typing-indicator">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        `;
+        // Après 2 secondes, affiche l'heure + le vrai message
+        setTimeout(() => {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            chatBody.innerHTML = `
+                <div class="message-time" style="color:#888;font-size:12px;margin-bottom:2px;">${timeString}</div>
+                <div class="message received">
+                    <p>Salut 👋<br>Comment puis-je vous aider ?</p>
+                </div>
+            `;
+        }, 2000);
+    });
+
+    closeChat.addEventListener("click", () => {
+        whatsappChat.style.display = "none";
+        chatBody.innerHTML = "";
+    });
+});
+</script>
+
+<style>
+/* Ajoute ou complète dans ton <style> */
+.send-btn {
+    background: #25d366;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #25d36633;
+}
+.send-btn:hover {
+    background: #1fa851;
+    box-shadow: 0 4px 16px #25d36644;
+}
+.send-btn img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    filter: invert(1) brightness(2);
+}
+</style>
+
 </body>
 </html>
