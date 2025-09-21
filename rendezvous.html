@@ -39,15 +39,46 @@
             transition: color 0.3s;
         }
         header .nav a:hover {
-            color: #4CAF50;
+            color: rgb(165,165,165);
         }
         header .cta-btn {
+            font-family: 'open sans', sans-serif;
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #101010;
             color: white;
             text-decoration: none;
             font-size: 18px;
             border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition:
+                background 0.3s cubic-bezier(.77,0,.18,1),
+                color 0.3s cubic-bezier(.77,0,.18,1),
+                box-shadow 0.4s cubic-bezier(.77,0,.18,1),
+                transform 0.3s cubic-bezier(.77,0,.18,1);
+            z-index: 1;
+        }
+        header .cta-btn::before {
+            content: '';
+            position: absolute;
+            left: 50%; top: 50%;
+            width: 0; height: 0;
+            background: linear-gradient(120deg, #fff 0%, #bbb 100%);
+            opacity: 0.18;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            z-index: 0;
+        }
+        header .cta-btn:hover::before {
+            width: 220%;
+            height: 500%;
+        }
+        header .cta-btn:hover {
+            background: #222;
+            color: #fff;
+            box-shadow: 0 6px 32px #aaa4, 0 0 8px #8882;
+            transform: translateY(-2px) scale(1.04) perspective(400px) rotateX(4deg);
         }
         section.reservation {
             padding: 50px;
@@ -66,17 +97,16 @@
             min-width: 320px;
             height: 700px;
         }
-        .footer-luxe {
-            background: linear-gradient(90deg, #232526 0%, #4CAF50 100%);
+        .footer-elegant {
+            background: linear-gradient(120deg, #111 0%, #444 100%);
             color: #fff;
-            padding: 48px 0 24px 0;
-            margin-top: 60px;
-            font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 -4px 24px rgba(76,175,80,0.15);
+            padding: 48px 0 18px 0;
             border-top-left-radius: 32px;
             border-top-right-radius: 32px;
+            box-shadow: 0 -2px 24px rgba(0,0,0,0.18);
+            font-family: 'Montserrat', sans-serif;
         }
-        .footer-luxe .container {
+        .footer-container {
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
@@ -85,83 +115,90 @@
             align-items: flex-start;
             gap: 32px;
         }
-        .footer-brand h2 {
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #fff 0%, #4CAF50 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .footer-col {
+            flex: 1 1 200px;
+            min-width: 180px;
+            margin-bottom: 18px;
         }
-        .footer-brand .description {
-            margin: 12px 0 0 0;
-            font-size: 17px;
-            opacity: 0.85;
+        .footer-col.brand h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+        .footer-col.brand h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            color: #bbb;
+        }
+        .footer-col.brand p {
+            color: #bbb;
+            font-size: 18px;
+            margin: 0;
             font-style: italic;
         }
-        .footer-nav {
+        .footer-col.nav {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-top: 8px;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
-        .footer-nav a {
-            color: #fff;
+        .footer-col.nav a {
+            color: #eee;
             text-decoration: none;
-            font-size: 19px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 18px;
+            transition: color 0.2s;
             position: relative;
         }
-        .footer-nav a::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #4CAF50;
-            transition: width .3s;
-            position: absolute;
-            bottom: -2px;
-            left: 0;
+        .footer-col.nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 6px #fff, 0 0 2px #888;
         }
-        .footer-nav a:hover::after {
+        .footer-col.socials {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
             width: 100%;
         }
-        .footer-socials {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-            margin-top: 8px;
-        }
-        .footer-socials a {
-            background: rgba(255,255,255,0.10);
+        .footer-col.socials a {
+            background: #222;
             border-radius: 50%;
             padding: 10px;
-            transition: background 0.3s, transform 0.3s;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 12px rgba(76,175,80,0.10);
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
-        .footer-socials a:hover {
-            background: #4CAF50;
-            transform: scale(1.12);
+        .footer-col.socials a:hover {
+            background: #fff;
+            transform: scale(1.1);
         }
-        .footer-socials img {
-            height: 30px;
-            width: 30px;
-            filter: invert(1) brightness(2);
+        .footer-col.socials img {
+            height: 28px;
+            width: 28px;
+            filter: invert(1) grayscale(1) brightness(0.7);
+            transition: filter 0.3s;
         }
-        .footer-luxe hr {
-            border: none;
-            border-top: 1.5px solid rgba(255,255,255,0.18);
-            margin: 36px 0 18px 0;
+        .footer-col.socials a:hover img {
+            filter: invert(0) grayscale(1) brightness(0.2);
         }
-        .footer-luxe p {
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 32px;
+            padding-top: 12px;
             text-align: center;
-            font-size: 16px;
-            opacity: 0.7;
+        }
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 15px;
             margin: 0;
             letter-spacing: 1px;
         }
@@ -186,7 +223,7 @@
             }
             header .cta-btn {
                 margin-top: 10px;
-                width: 90vw;
+                width: 40vw;
                 text-align: center;
                 font-size: 18px;
             }
@@ -199,47 +236,118 @@
             section.reservation p {
                 font-size: 16px;
             }
-            .calendly-inline-widget {
-                min-width: 100vw;
-                height: 500px;
+            .calendly-container {
+                display: flex;
+                justify-content: center; /* centre horizontalement */
+                align-items: center;     /* centre verticalement si tu veux */
+                width: 100%;
             }
-            .footer-luxe .container {
+
+            .calendly-inline-widget {
+                max-width: 900px; /* limite la largeur sur desktop */
+                width: 100%;
+                height: 700px;
+            }
+            .footer-container {
                 flex-direction: column;
                 align-items: center;
                 gap: 24px;
             }
-            .footer-nav {
-                flex-direction: row;
-                gap: 18px;
-                margin-top: 16px;
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+                text-align: center;
             }
-            .footer-brand h2 {
+            .footer-col.nav {
+                flex-direction: row;
+                justify-content: center;
+                gap: 18px;
+            }
+            .footer-col.brand h2 {
                 font-size: 26px;
             }
-            .footer-brand .description {
+            .footer-col.brand p {
                 font-size: 15px;
             }
-            .footer-socials img {
-                height: 26px;
-                width: 26px;
+            .footer-col.socials {
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 10px;
+                margin-top: 50px;
+                margin-bottom: 4px;
+                width: 100%;
+            }
+            .footer-col.socials a {
+                padding: 8px;
+            }
+            .footer-col.socials img {
+                height: 20px;
+                width: 20px;
             }
         }
         @media (max-width: 600px) {
             header .logo img {
                 height: 50px !important;
             }
-            .footer-brand h2 {
-                font-size: 20px;
-            }
-            .footer-brand .description {
-                font-size: 13px;
-            }
-            .footer-nav a {
+            .footer-elegant {
+                padding: 18px 0 8px 0;
+                border-radius: 14px 14px 0 0;
                 font-size: 15px;
             }
-            .footer-socials img {
-                height: 22px;
-                width: 22px;
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px; /* espace équilibré entre blocs */
+                padding: 0 16px;
+            }
+
+            .footer-col {
+                width: 100%;
+                margin: 0;
+            }
+
+            /* Bloc brand compact */
+            .footer-col.brand h2 {
+                font-size: 22px;
+                margin-bottom: 2px;
+            }
+            .footer-col.brand h3 {
+                font-size: 16px;
+                margin-bottom: 2px;
+            }
+            .footer-col.brand p {
+                font-size: 13px;
+                margin: 0;
+            }
+
+            /* Nav centrée en colonnes serrées */
+            .footer-col.nav {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .footer-col.nav a {
+                font-size: 14px;
+            }
+
+            /* Socials centrés sous la nav */
+            .footer-col.socials {
+                justify-content: center;
+                gap: 12px;
+            }
+            .footer-col.socials a {
+                padding: 6px;
+            }
+            .footer-col.socials img {
+                height: 20px;
+                width: 20px;
+            }
+
+            /* Ligne du bas compacte */
+            .footer-bottom {
+                margin-top: 12px;
+                padding-top: 6px;
+                font-size: 12px;
             }
         }
     </style>
@@ -251,17 +359,22 @@
     </script>
 </head>
 <body>
-    <header>
+   <header>
+        <!-- Logo à gauche -->
         <div class="logo">
             <a href="index.html"> <img src="Ethic.png" alt="Ethic Logo" style="height:100px; vertical-align:middle;"></a>
         </div>
+        
+
+        <!-- Navigation à droite -->
         <div class="nav">
             <a href="index.html">Accueil</a>
-            <a href="service.html">Services</a>
-            <a href="rendezvous.html">Rendez-Vous</a>
+            <a href="rendezvous.html">Réservez un appel</a>
             <a href="apropos.html">À propos</a>
         </div>
-        <a href="contcat.html" class="cta-btn">Nous Contacter</a>
+
+        <!-- Bouton "Nous Contacter" -->
+        <a href="contact.html" class="cta-btn">Contactez-nous</a>
     </header>
 
     <!-- Section Réservation -->
@@ -270,27 +383,29 @@
     <p>Choisissez directement un créneau dans notre calendrier pour discuter de votre projet.</p>
 
     <!-- Widget Calendly -->
+    <div class="calendly-container">
     <div class="calendly-inline-widget" 
-         data-url="https://calendly.com/contact-ethic/prise-de-contact" 
-         style="min-width:320px;height:700px;">
+        data-url="https://calendly.com/contact-ethic/prise-de-contact" 
+        style="min-width:320px;height:700px;">
+    </div>
     </div>
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
 
-    <footer class="footer-luxe">
-        <div class="container">
-            <div class="footer-brand">
+    <footer class="footer-elegant">
+        <div class="footer-container">
+            <div class="footer-col brand">
                 <h2>Ethic</h2>
-                <p class="description">Agence de Marketing Digital</p>
+                <h3>Agence d’acquisition</h3>
+                <p>Pour ceux qui veulent croître<br>avec éthique</p>
             </div>
-            <nav class="footer-nav">
+            <div class="footer-col nav">
                 <a href="index.html">Accueil</a>
-                <a href="service.html">Services</a>
-                <a href="rendezvous.html">Rendez-Vous</a>
+                <a href="rendezvous.html">Réservez un appel</a>
                 <a href="apropos.html">À propos</a>
                 <a href="contact.html">Contact</a>
-            </nav>
-            <div class="footer-socials">
+            </div>
+            <div class="footer-col socials">
                 <a href="https://www.linkedin.com/company/tryduo" target="_blank" title="LinkedIn">
                     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
                 </a>
@@ -302,8 +417,9 @@
                 </a>
             </div>
         </div>
-        <hr>
-        <p>&copy; 2025 Ethic. Tous droits réservés.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ethic. Tous droits réservés.</p>
+        </div>
     </footer>
 </body>
 </html>

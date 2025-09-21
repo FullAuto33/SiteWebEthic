@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethic - Agence d'Acquistion</title>
-    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
+    <title>Accueil - Agence d'Acquistion</title>
+    <link rel="icon" href="Ethic.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         html, body {
@@ -45,12 +45,12 @@
             transition: color 0.3s;
         }
         header .nav a:hover {
-            color: rgb(165, 165, 165);
+            color: rgb(165,165,165);
         }
         header .cta-btn {
-            font-family: 'Arapey';
+            font-family: 'open sans', sans-serif;
             padding: 10px 20px;
-            background-color: rgb(165, 165, 165);
+            background-color: #101010;
             color: white;
             text-decoration: none;
             font-size: 18px;
@@ -108,7 +108,7 @@
         }
         .cta a {
             padding: 10px 20px;
-            background-color: rgb(165, 165, 165);
+            background-color: #101010;
             color: white;
             text-decoration: none;
             font-size: 18px;
@@ -239,9 +239,9 @@
                 padding: 8px 0;
             }
             header .cta-btn {
-                font-family: 'Arapey';
+                font-family: 'open sans', sans-serif;
                 margin-top: 10px;
-                width: 90vw;
+                width: 40vw;
                 text-align: center;
                 font-size: 18px;
             }
@@ -282,36 +282,11 @@
             .footer-col.brand p {
                 font-size: 15px;
             }
-            .footer-col.socials img {
-                height: 26px;
-                width: 26px;
-            }
-        }
-        @media (max-width: 600px) {
-            header .logo img {
-                height: 50px !important;
-            }
-            .footer-elegant {
-                padding: 32px 0 12px 0;
-                border-radius: 18px 18px 0 0;
-            }
-            .footer-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                padding: 0 6px;
-            }
-            .footer-col {
-                min-width: unset;
-                width: 100%;
-                text-align: center;
-                margin-bottom: 6px;
-            }
             .footer-col.socials {
                 justify-content: center !important;
                 text-align: center !important;
                 gap: 10px;
-                margin-top: 8px;
+                margin-top: 50px;
                 margin-bottom: 4px;
                 width: 100%;
             }
@@ -322,30 +297,70 @@
                 height: 20px;
                 width: 20px;
             }
+        }
+        @media (max-width: 600px) {
+            header .logo img {
+                height: 50px !important;
+            }
+            .footer-elegant {
+                padding: 18px 0 8px 0;
+                border-radius: 14px 14px 0 0;
+                font-size: 15px;
+            }
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px; /* espace équilibré entre blocs */
+                padding: 0 16px;
+            }
+
+            .footer-col {
+                width: 100%;
+                margin: 0;
+            }
+
+            /* Bloc brand compact */
             .footer-col.brand h2 {
-                font-size: 18px;
+                font-size: 22px;
                 margin-bottom: 2px;
             }
             .footer-col.brand h3 {
-                font-size: 13px;
+                font-size: 16px;
                 margin-bottom: 2px;
             }
             .footer-col.brand p {
-                font-size: 12px;
+                font-size: 13px;
+                margin: 0;
             }
+
+            /* Nav centrée en colonnes serrées */
             .footer-col.nav {
-                flex-direction: row;
-                justify-content: center;
-                gap: 8px;
-                margin-bottom: 4px;
+                flex-direction: column;
+                gap: 6px;
             }
             .footer-col.nav a {
-                font-size: 12px;
-                padding: 0 2px;
+                font-size: 14px;
             }
+
+            /* Socials centrés sous la nav */
+            .footer-col.socials {
+                justify-content: center;
+                gap: 12px;
+            }
+            .footer-col.socials a {
+                padding: 6px;
+            }
+            .footer-col.socials img {
+                height: 20px;
+                width: 20px;
+            }
+
+            /* Ligne du bas compacte */
             .footer-bottom {
-                padding-top: 4px;
-                font-size: 11px;
+                margin-top: 12px;
+                padding-top: 6px;
+                font-size: 12px;
             }
         }
 
@@ -422,13 +437,13 @@
         }
 
         .cta-btn-rect-container {
-            font-family: 'Arapey';
+            font-family: 'open sans', sans-serif;
             display: flex;
             justify-content: center;
             margin: 24px 0 0 0;
         }
         .cta-btn-rect {
-            background: rgb(165,165,165);
+            background: #101010;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -689,25 +704,14 @@
         /* Ajoute ce code dans ta balise <style> principale */
 
         .about-img img {
-            animation: aboutImgFloat 2.5s cubic-bezier(.77,0,.18,1) infinite alternate;
+            animation: none !important;
             box-shadow: 0 2px 16px #2222;
-            transition: transform 0.4s cubic-bezier(.77,0,.18,1), box-shadow 0.4s;
+            transition: none;
+        }
+        @keyframes aboutImgFloat { /* Optionnel : tu peux aussi supprimer cette keyframes si tu veux */
         }
 
-        @keyframes aboutImgFloat {
-            0% {
-                transform: translateY(0) scale(1) rotate(-2deg);
-                box-shadow: 0 2px 16px #2222;
-            }
-            50% {
-                transform: translateY(-12px) scale(1.04) rotate(2deg);
-                box-shadow: 0 8px 32px #8883;
-            }
-            100% {
-                transform: translateY(0) scale(1) rotate(-2deg);
-                box-shadow: 0 2px 16px #2222;
-            }
-        }
+ 
     </style>
 
 
@@ -768,9 +772,15 @@
 
     <!-- Section d’introduction -->
     <section style="margin: auto; padding:48px 0 32px 0; text-align:center;">
-        <h1 style="font-size:2.5rem;font-family: 'Arapey'; margin-bottom:18px;">La solution pour rester à la page sans renoncer à vos valeurs</h1>
+        <h1 style="font-size:2.5rem; margin-bottom:18px;">
+            Parce que votre entreprise le mérite...<br>
+        </h1>
+        <h1 style="font-size:2.5rem; margin-bottom:18px;">
+            LA <span class="underline-solution">solution</span> pour rester à la page sans renoncer <br> à vos valeurs
+        </h1>
         <p style="font-size:1.25rem; max-width:700px; margin:0 auto 18px auto;">
-            Parce que votre entreprise le mérite.<br><br>
+            <br>
+           <br>
             Création d’un système d’acquisition sur mesure.<br>
             Pour en savoir plus :
         </p>
@@ -778,6 +788,7 @@
             <a href="rendezvous.html" class="cta-btn-rect">Vous voulez nous découvrir ?<br>Réservez un appel gratuitement !</a>
         </div><br>
         <p style="font-size:1.25rem; max-width:700px; margin:0 auto 18px auto;">
+            <br>
             Recevez une mind map personalisé gratuitement <br>en replissant ce formulaire ! 🎁
         </p>
         <div class="cta-btn-rect-container">
@@ -887,7 +898,7 @@
             text-align: left;
         }
         .about-text h2 {
-            font-family: 'Arapey';
+            font-family: 'open sans', sans-serif;
             font-size: 2rem;
             margin-bottom: 8px;
             color: #222;
@@ -923,14 +934,14 @@
             }
         }
         .cta {
-            font-family: 'Arapey';
+            font-family: 'open sans', sans-serif;
             text-align: center;
             margin-top: 32px;
             margin-bottom: 40px;
         }
         .cta a {
             padding: 14px 36px;
-            background-color: rgb(165, 165, 165);
+            background-color: #101010;
             color: white;
             text-decoration: none;
             font-size: 20px;
@@ -1087,7 +1098,9 @@
 
     <!-- Bouton contact déplacé avant le footer -->
     <div class="cta" style="margin-bottom:40px;">
-        <a href="contact.html">Contactez-nous</a>
+        <div class="cta-btn-appelle">
+            <a href="rendezvous.html">Réservez un appel maintenant !</a>
+        </div>
     </div>
 
     <footer class="footer-elegant">
@@ -1208,7 +1221,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chatBody.innerHTML = `
                 <div class="message-time" style="color:#888;font-size:12px;margin-bottom:2px;">${timeString}</div>
                 <div class="message received">
-                    <p>Salut 👋<br>Comment puis-je vous aider ?</p>
+                    <p>Envoyez un message ici pour prendre contact directement avec nous !</p>
                 </div>
             `;
         }, 2000);
